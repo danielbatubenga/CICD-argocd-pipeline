@@ -25,7 +25,7 @@ jobs:
     needs: build
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v
 
       - name: kustomize
         uses: imranismail/setup-kustomize@v1
@@ -45,8 +45,8 @@ jobs:
           git commit -am "change image tag"
 
       - name: push
-        uses: devops-infra/action-commit-push@v0.3
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      
+          branch: ${{ github.ref }}
     
