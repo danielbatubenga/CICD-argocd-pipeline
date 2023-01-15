@@ -38,10 +38,15 @@ jobs:
           kustomize edit set image goapp=danielbatubenga/go-app:${{ github.sha }}
           cat kustomization.yaml
 
+      - name: commit
+        run: |
+          git config --local user.email "daniel.batubenga@gmail.com"
+          git config --local user.name "Daniel Batubenga"
+          git commit -am "change image tag"
+
       - name: Commit and push changes
         uses: devops-infra/action-commit-push@v0.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
           commit_message: Version updated
     
