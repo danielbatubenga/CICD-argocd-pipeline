@@ -44,9 +44,10 @@ jobs:
           git config --local user.name "Daniel Batubenga"
           git commit -am "change image tag"
 
-      - name: push
+      - name: Commit and push changes
         uses: devops-infra/action-commit-push@v0.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+          commit_message: Version updated
     
