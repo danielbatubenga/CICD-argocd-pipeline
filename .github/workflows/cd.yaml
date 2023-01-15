@@ -45,7 +45,7 @@ jobs:
           git commit -am "change image tag"
 
       - name: push
-        uses: ad-m/github-push-action@master
+        uses: devops-infra/action-commit-push@v0.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
